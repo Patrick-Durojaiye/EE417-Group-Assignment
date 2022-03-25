@@ -1,0 +1,148 @@
+.log-form2{
+  height:100vh;
+  background-image: url("../images/spices.jpg");
+  background-size: cover;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+    border-radius: 5px;
+  background-color: #ffffff;
+  font-size: 16px;
+  resize: vertical;
+}
+
+select {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+}
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: #FB241F;
+    color: white;
+    padding: 12px 20px; /*adjusting the padding*/
+    border-radius: 4px; /*rounded borders*/
+    font-size: 15px; /*font size same as previous forms*/
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid transparent; /*border transparent to make transition*/
+    transition: all 0.5s ease;
+  }
+  
+  /* When moving the mouse over the submit button, the button goes transparent and black borders fill up */
+  input[type=submit]:hover {
+    background-color: transparent;
+    color: #000000fe;
+    border-color:#000000fe ;
+  }
+  
+label {
+    display: block;
+    font-weight: 200;
+    margin-bottom: 5px;
+}
+
+/*form validation color scheming*/
+ .success input{
+    border-color: #09c372;
+  }
+  
+
+  .success textarea{
+    border-color: #09c372;
+  }
+
+.error input{
+    border-color: #ff3860;
+  }
+
+
+.success select{
+    border-color: #09c372;
+  }
+
+.error select{
+    border-color: #ff3860;
+  }
+  
+.error textarea{
+  border-color: #ff3860;
+}
+
+.input-box .error{
+  color:  #ff3860;
+  font-size: 12px;
+  margin-top: 2%;
+  padding-left: 1%;
+  
+  }
+
+  /*placing the text correctly*/
+  #out {
+    display:flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #out td, #out th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #out tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #out tr:hover {background-color: #ddd;}
+  
+  #out th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #EA4C89;
+    color: white;
+  }
+
+
+
+  .button-login2{
+    text-align:center;
+  }
+  .button-login2 > button{
+    color: #ffffff;
+    font-size: 15px;
+    padding: 8px 35px;
+    background-color: #EA4C89 ;
+    transition: all 0.5 ease;
+    border: 1px solid transparent;
+    cursor:pointer;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.current::after{
+  content: '';
+  display: block;
+  border-radius: 5px;
+  height: 4px;
+  width:0;
+  background: #EA4C89;
+  width:100%;
+}
