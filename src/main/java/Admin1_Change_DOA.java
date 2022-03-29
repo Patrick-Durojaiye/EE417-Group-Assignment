@@ -41,7 +41,7 @@ public class Admin1_Change_DOA {
 		loadDriver(dbDriver);
 		Connection conn = getConnection();
 		
-		String sql = "INSERT INTO admin1_change_table VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO admin1_change_table (OLD_NAME,NEW_NAME,OLD_PASSWORD,NEW_PASSWORD,BANK_BALANCE) VALUES(?,?,?,?,?)";
 		
 		PreparedStatement ps;
 		try {
