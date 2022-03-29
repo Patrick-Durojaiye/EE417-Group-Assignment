@@ -4,14 +4,35 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
          
- <servlet>
+<servlet>
  	<servlet-name>Admin1_Servlet</servlet-name>
  	<servlet-class>Admin1_Servlet</servlet-class>
- </servlet>
+</servlet>
  
- <servlet-mapping>
+<servlet-mapping>
  	<servlet-name>Admin1_Servlet</servlet-name>
  	<url-pattern>/Admin1_Servlet</url-pattern>
- </servlet-mapping>
+</servlet-mapping>
+ 
+<servlet>
+ 	<servlet-name>Transfer_Funds_Servlet</servlet-name>
+ 	<servlet-class>Transfer_Funds_Servlet</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+ 	<servlet-name>Transfer_Funds_Servlet</servlet-name>
+ 	<url-pattern>/Transfer_Funds_Servlet</url-pattern>
+</servlet-mapping>
+ 
+<servlet>
+ 	<servlet-name>Loan_Application_Servlet</servlet-name>
+ 	<servlet-class>Loan_Application_Servlet</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+ 	<servlet-name>Loan_Application_Servlet</servlet-name>
+ 	<url-pattern>/Loan_Application_Servlet</url-pattern>
+</servlet-mapping>
+
  
 </web-app>

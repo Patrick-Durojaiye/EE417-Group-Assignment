@@ -82,7 +82,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <h1> Transfer Funds</h1>
     <br>
     <!-- Form to process transferring funds-->
-    <form action="/action_page.php" class="form_section" id="form">
+    <form action="Transfer_Funds_Servlet" method="post" class="form_section" id="form">
         <label for="Account_No" style="font-size: medium;">Account No:</label>
         <input type="number" id="Account_No" name="Account_No" class="inputs">
         <div class="error"></div>
@@ -117,70 +117,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
         <div class="error"></div>
         <br>
         <br>
-        <a href="services.html"><button class="button_input" type="submit"> Send </button></a>
+        <button class="button_input" type="submit"> Send </button></a>
     </form>
 
-    <script>
-        let id = (id) => document.getElementById(id);
-
-        let classes = (classes) => document.getElementsByClassName(classes);
-
-        let Account_No = id("Account_No"),
-            email = id("email"),
-            memo = id("memo"),
-            form = id("form"),
-            amountout = id("amountout"),
-            errorMsg = classes("error");
-
-        var accountnoArr = [];
-        var emailArr = [];
-        var memoArr = [];
-        var amountArr = [];
-
-        let showbutn = id("showbutn");
-
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            engine(Account_No, 0, "Account Number can't be blank");
-            engine(email, 1, "Email can't be blank");
-            engine(memo, 2, "Memo can't be blank");
-        });
-
-        let engine = (id, serial, message) => {
-
-            if (id.value.trim() === "") {
-
-
-                errorMsg[serial].innerHTML = message;
-                id.style.border = "2px solid red";
-
-            }
-
-            else {
-
-                errorMsg[serial].innerHTML = "";
-                id.style.border = "2px solid green";
-                if (serial == 2) {
-                    accountnoArr.push(Account_No.value.trim());
-                    emailArr.push(email.value.trim());
-                    memoArr.push(memo.value.trim());
-                    amountArr.push(amountout.value.trim());
-
-                    localStorage.setItem('accountno', JSON.stringify(accountnoArr));
-                    localStorage.setItem('email', JSON.stringify(emailArr));
-                    localStorage.setItem('memo', JSON.stringify(memoArr));
-                    localStorage.setItem('amount', JSON.stringify(amountArr));
-
-                    console.log(JSON.parse(localStorage.getItem("accountno")));
-                    console.log(JSON.parse(localStorage.getItem("email")));
-                    console.log(JSON.parse(localStorage.getItem("memo")));
-                    console.log(JSON.parse(localStorage.getItem("amount")));
-                }
-            }
-        }
-
-    </script>
 </div>
 <br>
 <br>
@@ -191,7 +130,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <h1> Loan Application</h1>
     <br>
     <!-- Form application to apply for a loan -->
-    <form action="/action_page.php" class="form_section" id="form1">
+    <form action="Loan_Application_Servlet" method="post" class="form_section" id="form1">
         <label for="Account_No1" style="font-size: medium;">Account No:</label>
         <input type="number" id="Account_No1" name="Account_No1" class="inputs">
         <div class="error1"></div>
@@ -227,7 +166,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
         <div class="error1"></div>
         <br>
         <br>
-        <a href="services.html"><button class="button_input" type="submit"> Apply </button></a>
+        <button class="button_input" type="submit"> Apply </button></a>
     </form>
 
     <script>
@@ -268,25 +207,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
             }
 
-            else {
-
-                errorMsg1[serial].innerHTML = "";
-                id.style.border = "2px solid green";
-
-                if (serial == 2) {
-                    Account_No1Arr.push(Account_No1.value.trim());
-                    name1Arr.push(name1.value.trim());
-                    email1Arr.push(email1.value.trim());
-                    amount1Arr.push(amountout1.value.trim());
-
-                    localStorage.setItem('accountno1', JSON.stringify(Account_No1Arr));
-                    localStorage.setItem('name1', JSON.stringify(name1Arr));
-                    localStorage.setItem('email1', JSON.stringify(email1Arr));
-                    localStorage.setItem('amount1', JSON.stringify(amount1Arr));
-
-                }
-
-            }
         }
 
     </script>
