@@ -157,7 +157,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                 </li>
                 <li><a href="newsblog.jsp">News and Blogs</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
-                <li><a href="Login.jsp" class="register-btn">Go Back To Login Page</a></li>
+                <li><a href="Login.jsp" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -166,7 +166,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <!-- Sign up form with relevant fields of data collection to set up an account-->
 <div class="signup_section">
     <br>
-    <h1> Sign Up to Maxtek Bank Today</h1>
+    <h1> Welcom Admin you can approve loans here!!</h1>
     <br>
     <br>
     <section style=" background-image: linear-gradient(120deg, hsl(234, 70%, 51%),hsl(0, 0%, 57%)" class="reg-form">
@@ -175,7 +175,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <!-- the title container to adjust any style if needs to be -->
             <div class="titles">
                 <!-- inline CSS used here -->
-                <h4 style="font-size: 25px; padding: 10px; color: hsl(234, 70%, 51%);">Register</h4>
+                <h4 style="font-size: 25px; padding: 10px; color: hsl(234, 70%, 51%);">*APPROVE LOANS*</h4>
             </div>
             <!-- the overall content is put in a container too -->
             <div class="content">
@@ -184,25 +184,19 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                     <!-- the details are input in this container, so can edit any style inside it -->
                     <div class="user-details">
                         <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%);" class="details">Full Name</span>
+                            <span style= "color: hsl(234, 70%, 51%);" class="details">Enter customer name</span>
                             <!-- the input is text for majority and the placeholder simply writes pre-determined text and it is a required field -->
-                            <input id="name" name="name" type="text" placeholder="Enter your name" oncopy="copyfunc()" >
+                            <input id="custname" name="custname" type="text" oncopy="copyfunc()" >
                             <div class="error"></div>
                         </div>
                         <!-- rest of the form is very similar, mainly from the above -->
                         <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%); class="details">Email</span>
-                            <input id="email" name="email" type="email" placeholder="Enter your email" oncopy="copyfunc()" >
-                            <div class="error"></div>
-                        </div>
-                        <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%); class="details">Date of Birth</span>
-                            <input id="date_of_birth" name="date_of_birth" type="date" placeholder="Enter your Date of Birth" oncopy="copyfunc()">
-                            <div class="error"></div>
-                        </div>
-                        <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%); class="details">Password</span>
-                            <input id="password" name="password" type="password" placeholder="Enter your password" oncopy="copyfunc()">
+                            <span style= "color: hsl(234, 70%, 51%);" class="details">Approve Loan?</span>
+                            <br>
+                            <input type="radio" id="approve" name="amount" value="1"/>
+                            <label for="html" style="font-size: medium;"> Yes</label> <br>
+                            <input type="radio" id="reject" name="amount" value="0"/>
+                            <label for="css" style="font-size: medium;"> No</label><br>
                             <div class="error"></div>
                         </div>
                     </div>
@@ -213,26 +207,23 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             </div>
         </div>
     </section>
+
 </div>
+
 <script>
     let id = (id) => document.getElementById(id);
     let classes = (classes) => document.getElementsByClassName(classes);
-    let username = id("name"),
-        email = id("email"),
-        dateofbirth = id("date_of_birth"),
-        password = id("password"),
-        form = id("form"),
+    let custname = id("custname"),
+
+
         errorMsg = classes("error");
-    var username2Arr = [];
-    var email4Arr = [];
-    var dateofbirthArr = [];
-    var passwordArr = [];
+    var custname2Arr = [];
+    var approve4Arr = [];
+    var rejectArr = [];
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        engine(username, 0, "Username can't be blank");
-        engine(email, 1, "Email can't be blank");
-        engine(dateofbirth, 2, "Date of birth can't be blank");
-        engine(password, 3, "Password can't be blank")
+        engine(custname, 0, "Customer name cannot be left blank");
     });
     let engine = (id, serial, message) => {
         if (id.value.trim() === "") {
@@ -248,104 +239,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                 dateofbirthArr.push(dateofbirth.value.trim());
                 passwordArr.push(password.value.trim());
                 // stores form inputs into local storage
-                localStorage.setItem("usernamesignup", JSON.stringify(username2Arr));
-                localStorage.setItem("emailsignup", JSON.stringify(email4Arr));
-                localStorage.setItem("dateofbirth", JSON.stringify(dateofbirthArr));
-                localStorage.setItem("password", JSON.stringify(passwordArr));
+                localStorage.setItem("custnameAdmin2", JSON.stringify(username2Arr));
                 alert("Signed Up");
             }
         }
     }
     function copyfunc() {
         alert("You just copied sensistive becareful not to paste it in an unsecure place");
-    }
-</script>
-<!-- Type of accounts with benefits listed -->
-<div class="account_title">
-    <h1 style="padding: 5%;"> Account Types </h1>
-</div>
-<div class="ranking_section">
-    <div class="ranking_sec1">
-        <h3 style="text-align: left;">Basic</h3>
-        <ul>
-            <li>
-                <p>Savings</p>
-            </li>
-            <li>
-                <p>Loans</p>
-            </li>
-            <li>
-                <p>Junior Account</p>
-            </li>
-        </ul>
-    </div>
-    <br>
-    <div class="ranking_sec2">
-        <h3 style="text-align: left;">Plus</h3>
-        <ul>
-            <li>
-                <p>Travel Insurance</p>
-            </li>
-            <li>
-                <p>Single Airport Lounge Access</p>
-            </li>
-            <li>
-                <p>Bill Splitting</p>
-            </li>
-        </ul>
-    </div>
-    <br>
-    <div class="ranking_sec3">
-        <h3 style="text-align: left;">Premium</h3>
-        <ul>
-            <li>
-                <p>Metal Debit Card</p>
-            </li>
-            <li>
-                <p>Cash Back on All Transactions</p>
-            </li>
-            <li>
-                <p>0% fees on FX rates</p>
-            </li>
-        </ul>
-    </div>
-</div>
-<br>
-<div class="footer">
-    <br>
-    <h1>Sign Up For Updates</h1>
-    <br>
-    <form action="/action_page.php" id="formft">
-        <span for="email" style="font-size: medium;">Enter your email:</span>
-        <input  type="email" id="emailft" name="email" class="email_input">
-        <input type="submit" class="footer_button">
-    </form>
-    <div class="error_success"></div>
-    <br>
-</div>
-<br>
-<script>
-    let emailft = id("emailft"),
-        formft = id("formft"),
-        error_successMsg = classes("error_success");
-    var emailftArr = [];
-    formft.addEventListener("submit", (e) => {
-        e.preventDefault();
-        engineft(emailft, 0, "Email can't be blank");
-    });
-    let engineft = (id, serial, message) => {
-        if (id.value.trim() === "") {
-            error_successMsg[serial].innerHTML = message;
-            id.style.border = "2px solid red";
-        }
-        else {
-            error_successMsg[serial].innerHTML = "Email has been recorded";
-            id.style.border = "2px solid green";
-            if (serial == 0) {
-                emailftArr.push(emailft.value.trim());
-                localStorage.setItem("emailft", JSON.stringify(emailftArr));
-            }
-        }
     }
 </script>
 </body>

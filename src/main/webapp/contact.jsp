@@ -15,18 +15,19 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <title>Maxtek Personal Finance Managment</title>
     <link href="css/contactstyle.css" rel="stylesheet" type="text/css" />
     <!-- various style sheets added -->
-    <Link rel="stylesheet" href="css/style.css">
-    <Link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/navbar.css"/>
     <!-- font added here -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script defer src="js/navbar.js"></script>
 
 <body>
+<br>
 <!-- forming the hamburger menu -->
 <div class="stick">
     <!-- putting it in a container and allowing it to flex display so display is correct -->
@@ -42,7 +43,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
         margin: auto;
         display: flex;">
             <img src="./Images-site/Logo_1.png" alt="logo" width="150px" onmouseover="bigImg(this)"
-                 onmouseout="normalImg(this)">
+                 onmouseout="normalImg(this)"/>
         </div>
     </div>
 
@@ -70,7 +71,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                 </li>
                 <li><a href="newsblog.jsp">News and Blogs</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
-                <li><a href="home.jsp" class="register-btn">Logout</a></li>
+                <li><a href="Login.jsp" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -127,108 +128,41 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
 <script>
     let id = (id) => document.getElementById(id);
-
     let classes = (classes) => document.getElementsByClassName(classes);
-
     let username = id("name"),
         email = id("email"),
         textfield = id("textfield"),
         form = id("form"),
-
         errorMsg = classes("error");
-
     var usernameArr = [];
     var email2Arr = [];
     var textfieldArr = [];
-
     let contactbutn = id("contactbutn");
-
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-
         engine(username, 0, "Username can't be blank");
         engine(email, 1, "Email can't be blank");
         engine(textfield, 2, "Textfield can't be blank");
     });
-
     let engine = (id, serial, message) => {
-
         if (id.value.trim() === "") {
-
-
             errorMsg[serial].innerHTML = message;
             id.style.border = "2px solid red";
-
         }
-
         else {
-
             errorMsg[serial].innerHTML = "";
             id.style.border = "2px solid green";
-
             if (serial == 2) {
                 usernameArr.push(username.value.trim());
                 email2Arr.push(email.value.trim());
                 textfieldArr.push(textfield.value.trim());
-
                 localStorage.setItem('username', JSON.stringify(usernameArr));
                 localStorage.setItem('email2', JSON.stringify(email2Arr));
                 localStorage.setItem('textfield', JSON.stringify(textfield));
             }
-
         }
     }
 </script>
 
 <br>
-<div class="footer">
-    <br>
-    <h1>Sign Up For Updates</h1>
-    <br>
-    <form action="/action_page.php" id="form1">
-        <label for="email" style="font-size: medium;">Enter your email:</label>
-        <input type="email" id="email1" name="email" class="email_input">
-        <input type="submit" class="footer_button">
-    </form>
-    <div class="error_success"></div>
-    <br>
-</div>
-
-<script>
-    // let id = (id) => document.getElementById(id);
-
-    // let classes = (classes) => document.getElementsByClassName(classes);
-
-    let emailft = id("email1"),
-        form1 = id("form1"),
-
-        error_successMsg = classes("error_success");
-
-    var emailftArr = [];
-
-    form1.addEventListener("submit", (e) => {
-
-        e.preventDefault();
-
-        engine1(emailft, 0, "Email can't be blank");
-    });
-
-    let engine1 = (id, serial, message) => {
-        if (id.value.trim() === "") {
-            error_successMsg[serial].innerHTML = message;
-            id.style.border = "2px solid red";
-        }
-
-        else {
-            error_successMsg[serial].innerHTML = "Email has been recorded";
-            id.style.border = "2px solid green";
-
-            if (serial == 0) {
-                emailftArr.push(emailft.value.trim());
-
-                localStorage.setItem("emailft", JSON.stringify(emailftArr));
-            }
-        }
-    }
-</script>
 </body>

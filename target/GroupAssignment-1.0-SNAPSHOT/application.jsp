@@ -12,21 +12,22 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; width=device-width" />
-    <title>Maxtek Personal Finance Managment</title>
+    <title>Maxtek Personal Finance Management</title>
     <link href="css/applicationstyle.css" rel="stylesheet" type="text/css" />
     <!-- various style sheets added -->
-    <Link rel="stylesheet" href="css/style.css">
-    <Link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/navbar.css"/>
     <!-- font added here -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script defer src="js/navbar.js"></script>
 
 <body>
+<br>
 <!-- forming the hamburger menu -->
 <div class="stick">
     <!-- putting it in a container and allowing it to flex display so display is correct -->
@@ -70,7 +71,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                 </li>
                 <li><a href="newsblog.jsp">News and Blogs</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
-                <li><a href="home.jsp" class="register-btn">Logout</a></li>
+                <li><a href="Login.jsp" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -123,59 +124,41 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 </div>
 <script>
     let id = (id) => document.getElementById(id);
-
     let classes = (classes) => document.getElementsByClassName(classes);
     let names = (names) => document.getElementsByName(names);
     let phoneno = id("Phone_No"),
         email3 = id("email"),
         memo2 = id("memo"),
         form = id("form"),
-
         errorMsg = classes("error");
-
     var phoneArr = [];
     var email3Arr = [];
     var memo2Arr = [];
-
     let displaybutn = id("displaybutn");
-
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-
         engine(phoneno, 0, "Username can't be blank");
         engine(email3, 1, "Email can't be blank");
         engine(memo2, 2, "Textfield can't be blank");
     });
-
     let engine = (id, serial, message) => {
-
         if (id.value.trim() === "") {
-
-
             errorMsg[serial].innerHTML = message;
             id.style.border = "2px solid red";
-
         }
-
         else {
-
             errorMsg[serial].innerHTML = "";
             id.style.border = "2px solid green";
-
             if (serial == 2) {
                 phoneArr.push(phoneno.value.trim());
                 email3Arr.push(email3.value.trim());
                 memo2Arr.push(memo2.value.trim());
-
                 localStorage.setItem('phone', JSON.stringify(phoneArr));
                 localStorage.setItem('email3', JSON.stringify(email3Arr));
                 localStorage.setItem('memo2', JSON.stringify(memo2Arr));
             }
-
         }
     }
-
-
 </script>
 
 <div class="lounge_section">
@@ -197,52 +180,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 </div>
 
 <br>
-<div class="footer">
-    <br>
-    <h1>Sign Up For Updates</h1>
-    <br>
-    <form action="/action_page.php" id="formft">
-        <label for="email" style="font-size: medium;">Enter your email:</label>
-        <input type="email" id="emailft" name="email" class="email_input">
-        <input type="submit" class="footer_button">
-    </form>
-    <div class="error_success"></div>
-    <br>
-</div>
 
-<script>
-
-    let emailft = id("emailft"),
-        formft = id("formft"),
-
-        error_successMsg = classes("error_success");
-
-    var emailftArr = [];
-
-    formft.addEventListener("submit", (e) => {
-
-        e.preventDefault();
-
-        engineft(emailft, 0, "Email can't be blank");
-    });
-
-    let engineft = (id, serial, message) => {
-        if (id.value.trim() === "") {
-            error_successMsg[serial].innerHTML = message;
-            id.style.border = "2px solid red";
-        }
-
-        else {
-            error_successMsg[serial].innerHTML = "Email has been recorded";
-            id.style.border = "2px solid green";
-
-            if (serial == 0) {
-                emailftArr.push(emailft.value.trim());
-
-                localStorage.setItem("emailft", JSON.stringify(emailftArr));
-            }
-        }
-    }
-</script>
 
 </body>
