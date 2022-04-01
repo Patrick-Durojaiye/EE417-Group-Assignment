@@ -95,20 +95,8 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
-                <li><a class="current" href="index.jsp">Home</a></li>
                 <li><a href="about.jsp">About Us</a></li>
-                <li class="checker"><a>Apps</a>
-                    <!-- dropdown is created -->
-                    <ul class="dropdown">
-
-                        <li class="dropdown-item"><a href="services.jsp">Services</a></li>
-                        <li class="dropdown-item"><a href="application.jsp"> Applications</a></li>
-
-                    </ul>
-                </li>
                 <li><a href="newsblog.jsp">News and Blogs</a></li>
-                <li><a href="contact.jsp">Contact Us</a></li>
-                <li><a href="Login.jsp" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -197,9 +185,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <br>
     <!-- Footer section
         Has email input and a button to submit-->
-    <form action="/action_page.php" id="form">
+    <form action="NewsletterServlet" id="form">
         <label for="email" style="font-size: medium; color:">Enter your email:</label>
-        <input type="email" id="email" name="email" class="email_input">
+        <input type="email" id="emailft" name="emailft" class="email_input">
         <input type="submit" class="footer_button">
     </form>
     <div class="error_success"></div>
@@ -209,7 +197,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <script>
     let ids = (id) => document.getElementById(id);
     let classes = (classes) => document.getElementsByClassName(classes);
-    let emailft = ids("email"),
+    let emailft = ids("emailft"),
         form = ids("form"),
         error_successMsg = classes("error_success");
     var emailftArr = [];

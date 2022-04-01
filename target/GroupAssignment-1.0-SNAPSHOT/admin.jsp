@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -143,109 +144,114 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
-                <li><a class="current" href="home.jsp">Home</a></li>
-                <li><a href="about.jsp">About Us</a></li>
-                <li class="checker"><a>Apps</a>
-                    <!-- dropdown is created -->
-                    <ul class="dropdown">
-
-                        <li class="dropdown-item"><a href="services.jsp">Services</a></li>
-                        <li class="dropdown-item"><a href="portfolio.jsp">Portfolio</a></li>
-                        <li class="dropdown-item"><a href="application.jsp"> Applications</a></li>
-
-                    </ul>
-                </li>
-                <li><a href="newsblog.jsp">News and Blogs</a></li>
-                <li><a href="contact.jsp">Contact Us</a></li>
-                <li><a href="Login.jsp" class="register-btn">Logout</a></li>
+                <li><a class="current" href="admin.jsp">Home</a></li>
+                <li><a href="adminapproveloans.jsp">Approve Loans</a></li>
+                <li><a href="adminupdateuser.jsp">Update User Info</a></li>
+                <li><a href="LogoutServlet" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
 </div>
 
-<!-- Sign up form with relevant fields of data collection to set up an account-->
-<div class="signup_section">
-    <br>
-    <h1> Welcom Admin you can approve loans here!!</h1>
-    <br>
-    <br>
-    <section style=" background-image: linear-gradient(120deg, hsl(234, 70%, 51%),hsl(0, 0%, 57%)" class="reg-form">
-        <!-- div container for the entire form -->
-        <div class="container2">
-            <!-- the title container to adjust any style if needs to be -->
-            <div class="titles">
-                <!-- inline CSS used here -->
-                <h4 style="font-size: 25px; padding: 10px; color: hsl(234, 70%, 51%);">*APPROVE LOANS*</h4>
-            </div>
-            <!-- the overall content is put in a container too -->
-            <div class="content">
-                <!-- the action is set to do nothing at the moment as there is no POST/GET at the moment -->
-                <form id="form" method="post">
-                    <!-- the details are input in this container, so can edit any style inside it -->
-                    <div class="user-details">
-                        <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%);" class="details">Enter customer name</span>
-                            <!-- the input is text for majority and the placeholder simply writes pre-determined text and it is a required field -->
-                            <input id="custname" name="custname" type="text" oncopy="copyfunc()" >
-                            <div class="error"></div>
-                        </div>
-                        <!-- rest of the form is very similar, mainly from the above -->
-                        <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%);" class="details">Approve Loan?</span>
-                            <br>
-                            <input type="radio" id="approve" name="amount" value="1"/>
-                            <label for="html" style="font-size: medium;"> Yes</label> <br>
-                            <input type="radio" id="reject" name="amount" value="0"/>
-                            <label for="css" style="font-size: medium;"> No</label><br>
-                            <div class="error"></div>
-                        </div>
-                    </div>
-                    <div class="button">
-                        <input type="submit">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+
+<div>
+    <h1> Bank Users </h1>
+    <table border="2px">
+        <tr>
+            <td>First Name</td>
+            <td>Email</td>
+            <td>Date of Birth</td>
+            <td>Account no</td>
+            <td>Balance</td>
+        </tr>
+
+        <%
+            String dbname = "bankdatabase";
+            String usernames = "root";
+            String password = "pass";
+            String url = "jdbc:mysql://localhost:3306/"+dbname;
+            try {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con= DriverManager.getConnection(url,usernames,password);
+                Statement stmt=con.createStatement();
+                String sqlstatement = "select first_name, email, date_of_birth, accountno, balance from users";
+                ResultSet rs = stmt.executeQuery(sqlstatement);
+                while (rs.next())
+                {
+
+        %>
+        <tr><td><%=rs.getString("first_name")%></td>
+            <td><%=rs.getString("email")%></td>
+            <td><%=rs.getString("date_of_birth")%></td>
+            <td><%=rs.getString("accountno")%></td>
+            <td><%=rs.getString("balance")%></td></tr>
+
+        <%
+            }
+        %>
+    </table>
+    <%
+            rs.close();
+            stmt.close();
+            con.close();
+        }
+        catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    %>
 
 </div>
 
-<script>
-    let id = (id) => document.getElementById(id);
-    let classes = (classes) => document.getElementsByClassName(classes);
-    let custname = id("custname"),
 
+<div>
+    <br>
+    <br>
+    <h1> Contact Form Submissions</h1>
+    <table border="2px">
+        <tr>
+            <td>First Name</td>
+            <td>Email</td>
+            <td>Message</td>
+        </tr>
 
-        errorMsg = classes("error");
-    var custname2Arr = [];
-    var approve4Arr = [];
-    var rejectArr = [];
+        <%
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        engine(custname, 0, "Customer name cannot be left blank");
-    });
-    let engine = (id, serial, message) => {
-        if (id.value.trim() === "") {
-            errorMsg[serial].innerHTML = message;
-            id.style.border = "2px solid red";
-        }
-        else {
-            errorMsg[serial].innerHTML = "";
-            id.style.border = "2px solid green";
-            if (serial == 3) {
-                username2Arr.push(username.value.trim());
-                email4Arr.push(email.value.trim());
-                dateofbirthArr.push(dateofbirth.value.trim());
-                passwordArr.push(password.value.trim());
-                // stores form inputs into local storage
-                localStorage.setItem("custnameAdmin2", JSON.stringify(username2Arr));
-                alert("Signed Up");
+            try {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con= DriverManager.getConnection(url,usernames,password);
+                Statement stmt=con.createStatement();
+                String sqlstatement = "select first_name, email, message from contacttable";
+                ResultSet rs = stmt.executeQuery(sqlstatement);
+                System.out.println("passed rs");
+                while (rs.next())
+                {
+                    System.out.println("inside while loop, rs exist");
+                    System.out.println(rs.getString("first_name"));
+        %>
+        <tr><td><%=rs.getString("first_name")%></td>
+            <td><%=rs.getString("email")%></td>
+            <td><%=rs.getString("message")%></td>
+        </tr>
+
+        <%
             }
+        %>
+    </table>
+    <%
+            rs.close();
+            stmt.close();
+            con.close();
         }
-    }
-    function copyfunc() {
-        alert("You just copied sensistive becareful not to paste it in an unsecure place");
-    }
-</script>
+        catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    %>
+
+</div>
+
+
 </body>

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -143,21 +144,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
-                <li><a class="current" href="home.jsp">Home</a></li>
-                <li><a href="about.jsp">About Us</a></li>
-                <li class="checker"><a>Apps</a>
-                    <!-- dropdown is created -->
-                    <ul class="dropdown">
-
-                        <li class="dropdown-item"><a href="services.jsp">Services</a></li>
-                        <li class="dropdown-item"><a href="portfolio.jsp">Portfolio</a></li>
-                        <li class="dropdown-item"><a href="application.jsp"> Applications</a></li>
-
-                    </ul>
-                </li>
-                <li><a href="newsblog.jsp">News and Blogs</a></li>
-                <li><a href="contact.jsp">Contact Us</a></li>
-                <li><a href="Login.jsp" class="register-btn">Logout</a></li>
+                <li><a class="current" href="admin.jsp">Home</a></li>
+                <li><a href="adminapproveloans.jsp">Approve Loans</a></li>
+                <li><a href="adminupdateuser.jsp">Update User Info</a></li>
+                <li><a href="LogoutServlet" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -166,7 +156,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <!-- Sign up form with relevant fields of data collection to set up an account-->
 <div class="signup_section">
     <br>
-    <h1> Welcome Admin you can change user details and bank balances here !!</h1>
+    <h1> Welcom Admin you can approve loans here!!</h1>
     <br>
     <br>
     <section style=" background-image: linear-gradient(120deg, hsl(234, 70%, 51%),hsl(0, 0%, 57%)" class="reg-form">
@@ -175,39 +165,28 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <!-- the title container to adjust any style if needs to be -->
             <div class="titles">
                 <!-- inline CSS used here -->
-                <h4 style="font-size: 25px; padding: 10px; color: hsl(234, 70%, 51%);">*UPDATE DETAILS*</h4>
+                <h4 style="font-size: 25px; padding: 10px; color: hsl(234, 70%, 51%);">*APPROVE LOANS*</h4>
             </div>
             <!-- the overall content is put in a container too -->
             <div class="content">
                 <!-- the action is set to do nothing at the moment as there is no POST/GET at the moment -->
-                <form id="form" method="post">
+                <form id="form" method="post" action="ApproveLoanServlet" onsubmit="validation()">
                     <!-- the details are input in this container, so can edit any style inside it -->
                     <div class="user-details">
                         <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%);" class="details">Enter old name</span>
+                            <span style= "color: hsl(234, 70%, 51%);" class="details">Enter Loan Id</span>
                             <!-- the input is text for majority and the placeholder simply writes pre-determined text and it is a required field -->
-                            <input id="oldname" name="oldname" type="text" oncopy="copyfunc()" >
+                            <input id="loanid" name="loanid" type="number" oncopy="copyfunc()" >
                             <div class="error"></div>
                         </div>
                         <!-- rest of the form is very similar, mainly from the above -->
                         <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%); class="details">Enter new name</span>
-                            <input id="newname" name="newname" type="text" oncopy="copyfunc()" >
-                            <div class="error"></div>
-                        </div>
-                        <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%); class="details">Enter old password</span>
-                            <input id="oldpass" name="oldpass" type="password" oncopy="copyfunc()">
-                            <div class="error"></div>
-                        </div>
-                        <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%); class="details">Enter new password</span>
-                            <input id="newpass" name="newpass" type="password" oncopy="copyfunc()">
-                            <div class="error"></div>
-                        </div>
-                        <div class="input-box">
-                            <span style= "color: hsl(234, 70%, 51%); class="details">Update bank balance</span>
-                            <input id="newbankbal" name="newbankbal" type="text" oncopy="copyfunc()">
+                            <span style= "color: hsl(234, 70%, 51%);" class="details">Approve Loan?</span>
+                            <br>
+                            <input type="radio" id="approve" name="amount" value="1"/>
+                            <label for="approve" style="font-size: medium;"> Yes</label> <br>
+                            <input type="radio" id="reject" name="amount" value="0"/>
+                            <label for="reject" style="font-size: medium;"> No</label><br>
                             <div class="error"></div>
                         </div>
                     </div>
@@ -222,48 +201,26 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 </div>
 
 <script>
-    let id = (id) => document.getElementById(id);
-    let classes = (classes) => document.getElementsByClassName(classes);
-    let oldname = id("oldname"),
-        newname = id("newname"),
-        oldpass = id("oldpass"),
-        newpass = id("newpass"),
-        newbankbal = id("newbankbal"),
-        form = id("form"),
-        errorMsg = classes("error");
-    var oldname2Arr = [];
-    var newname4Arr = [];
-    var oldpassArr = [];
-    var newpassArr = [];
-    var newbankbalArr = [];
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        engine(oldname, 0, "Oldname can't be blank");
-        engine(newname, 1, "Newname can't be blank");
-        engine(oldpass, 2, "Old password can't be blank");
-        engine(newpass, 3, "New password can't be blank")
-        engine(newbankbal, 4, "New bank balance has to be entered")
-    });
-    let engine = (id, serial, message) => {
-        if (id.value.trim() === "") {
-            errorMsg[serial].innerHTML = message;
-            id.style.border = "2px solid red";
-        }
-        else {
-            errorMsg[serial].innerHTML = "";
-            id.style.border = "2px solid green";
-            if (serial == 3) {
-                username2Arr.push(username.value.trim());
-                email4Arr.push(email.value.trim());
-                dateofbirthArr.push(dateofbirth.value.trim());
-                passwordArr.push(password.value.trim());
-                // stores form inputs into local storage
-                localStorage.setItem("oldnameadmin1", JSON.stringify(username2Arr));
-                localStorage.setItem("newnameadmin1", JSON.stringify(email4Arr));
-                localStorage.setItem("oldpassadmin1", JSON.stringify(dateofbirthArr));
-                localStorage.setItem("newpassadmin1", JSON.stringify(passwordArr));
-                localStorage.setItem("newbankbaladmin1", JSON.stringify(passwordArr));
-                alert("Signed Up");
+    function validation() {
+        let id = (id) => document.getElementById(id);
+        let classes = (classes) => document.getElementsByClassName(classes);
+        let loanid = id("loanid"),
+
+            errorMsg = classes("error");
+
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            engine(loanid, 0, "Loan Id cannot be left blank");
+        });
+        let engine = (id, serial, message) => {
+            if (id.value.trim() === "") {
+                errorMsg[serial].innerHTML = message;
+                id.style.border = "2px solid red";
+            } else {
+                errorMsg[serial].innerHTML = "";
+                id.style.border = "2px solid green";
+
             }
         }
     }
@@ -271,4 +228,52 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
         alert("You just copied sensistive becareful not to paste it in an unsecure place");
     }
 </script>
+
+<div>
+    <h1> Loans </h1>
+    <table border="2px">
+        <tr>
+            <td>Loan Id</td>
+            <td>Account No</td>
+            <td>First Name</td>
+            <td>Amount</td>
+        </tr>
+
+        <%
+            String dbname = "bankdatabase";
+            String usernames = "root";
+            String password = "pass";
+            String url = "jdbc:mysql://localhost:3306/"+dbname;
+            try {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con= DriverManager.getConnection(url,usernames,password);
+                Statement stmt=con.createStatement();
+                String sqlstatement = "select id, accountno, first_name, amount from loans";
+                ResultSet rs = stmt.executeQuery(sqlstatement);
+                while (rs.next())
+                {
+
+        %>
+        <tr><td><%=rs.getString("id")%></td>
+            <td><%=rs.getString("accountno")%></td>
+            <td><%=rs.getString("first_name")%></td>
+            <td><%=rs.getString("amount")%></td></tr>
+
+        <%
+            }
+        %>
+    </table>
+    <%
+            rs.close();
+            stmt.close();
+            con.close();
+        }
+        catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    %>
+
+</div>
 </body>

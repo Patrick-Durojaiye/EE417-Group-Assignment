@@ -51,7 +51,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <!-- importing the logo to be placed at the top right inline with the navbar -->
     <div class="navbar--middle" id="navbar--middle">
 
-        <nav style="    padding: 0;
+        <nav style="padding: 0;
         display: flex;
         flex-wrap: nowrap;
         justify-content: center;
@@ -66,13 +66,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                     <ul class="dropdown">
 
                         <li class="dropdown-item"><a href="services.jsp">Services</a></li>
-                        <li class="dropdown-item"><a href="application.jsp"> Applications</a></li>
+                        <li class="dropdown-item"><a href="myaccount.jsp"> My Account</a></li>
 
                     </ul>
                 </li>
                 <li><a href="newsblog.jsp">News and Blogs</a></li>
                 <li><a href="contact.jsp">Contact Us</a></li>
-                <li><a href="Login.jsp" class="register-btn">Logout</a></li>
+                <li><a href="LogoutServlet" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
