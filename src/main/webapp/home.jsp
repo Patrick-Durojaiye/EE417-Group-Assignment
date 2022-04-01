@@ -59,7 +59,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
-                <li><a class="current" href="index.jsp">Home</a></li>
+                <li><a class="current" href="home.jsp">Home</a></li>
                 <li><a href="about.jsp">About Us</a></li>
                 <li class="checker"><a>Apps</a>
                     <!-- dropdown is created -->
@@ -80,11 +80,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
 <div class="main_section">
     <div class="text_section">
-        <h1> Maxtek </h1> <br></br>
+        <h1> DCU </h1> <br></br>
         <h1> Bank </h1>
         <br>
         <h2>Loans at your door step!</h2>
-        <p>Save, Invest and Bank digitally. <br>
+        <p>The Digital Bank for you! <br>
             All your everyday financial solutions available for you at your finger
             tips
         </p>
@@ -98,47 +98,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 </div>
 
 <div class="signup_button">
-    <br>
-    <br>
-    <a href="signup.jsp"><button>
-        Get an Account Today!
+
+    <a href="services.jsp"><button>
+        Get Banking
     </button> </a>
 </div>
 
-<br>
-
-<!-- Section with Maxtek services with explations-->
-<div class="services_section">
-    <div>
-        <img src="Images-site/saving_pic.png" style="padding-top: 7%;">
-        <h1> Save </h1>
-        <p> Your personal finance saving application. Maxtek allows you to save your money using various
-            techniquews<br>
-            such as recurring payments,
-            percentage transfers of every transfer and much more. Start saving today and earn <b>0.5% APR </b>
-        </p>
-    </div>
-
-    <div>
-        <img src="Images-site/investing_pic.png">
-        <h1> Invest </h1>
-        <p>Grow your wealth and avail of our investment options at the Maxtek bank. Such options are index's, <br>
-            individual stocks, pension funds, digital assets and much more.
-            Returns are at an average of
-            <b> 7.3% pa</b>
-
-        </p>
-    </div>
-
-    <div>
-        <img src="Images-site/banking_pic.png" style="padding-top: 7%;">
-        <h1> Bank </h1>
-        <p>Maxtek bank offers various financial solutions. <b>Spend, Transfer, Exchange</b> <br> and much more can
-            be done using the
-            Maxtek bank online platform. Our online banking services also include a <br> weekly blog and daily new
-            articles of the financial markets</p>
-    </div>
-</div>
-<br>
 </body>
 </html>

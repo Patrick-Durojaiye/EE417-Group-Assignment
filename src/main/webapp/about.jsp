@@ -23,41 +23,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
-    <style>
-        .aboutus_logos {
-            color: white;
-            border-style: solid;
-            border-width: thick;
-            border-color: hsl(234, 70%, 51%);
-            background-color: hsl(234, 70%, 51%);
-            width:100%;
-            font-size: 15px;
-            text-align: center;
-            padding: 15px;
-            height:auto;
-        }
-        .aboutus_logo h1{
-            padding: 10px;
-        }
-        /* about us text centered and font size declared*/
-        .aboutus_text p
-        {
-            color: black;
-            border-style: solid;
-            border-width: thick;
-            border-color: hsl(234, 70%, 51%);
-            font-family: Arial, Helvetica;
-            text-align: center;
-            font-size: large;
-            text-align: left;
-            padding: 15px;
-            width: 95%;
-            height:auto;
-            margin: auto;
-
-        }
-    </style>
+    <link rel="stylesheet" href="css/aboutus2.css"/>
 
 </head>
 <script defer src="js/navbar.js"></script>
@@ -95,8 +61,20 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
+                <li><a class="current" href="home.jsp">Home</a></li>
                 <li><a href="about.jsp">About Us</a></li>
+                <li class="checker"><a>Apps</a>
+                    <!-- dropdown is created -->
+                    <ul class="dropdown">
+
+                        <li class="dropdown-item"><a href="services.jsp">Services</a></li>
+                        <li class="dropdown-item"><a href="myaccount.jsp"> My Account</a></li>
+
+                    </ul>
+                </li>
                 <li><a href="newsblog.jsp">News and Blogs</a></li>
+                <li><a href="contact.jsp">Contact Us</a></li>
+                <li><a href="LogoutServlet" class="register-btn">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -117,7 +95,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
 <!-- Main About Us Image-->
 <div class="aboutuus_banner">
-    <img src="./Images-site/aboutusbanner.jpg">
+    <img src="./Images-site/banner.jpg">
 </div>
 
 <br>
@@ -126,10 +104,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <!-- About Us text paragraph -->
 <div class="aboutus_text">
 
-    <p><b></>Maxtek Bank is an online fintech platform that was established in 2013 in Ireland by August Harlow. Maxtek
+    <p><b>DCU Bank is an online fintech platform that was established in 2013 in Ireland by Franklin Leroy. DCU Bank
         aims
         to be the number 1 financial tool for everyones day to day use. Be it saving, investing or day to day banking
-        such as payments and bank transfers. Since its inception Maxtek has achieved over 50,000 daily users and has done over $2 billion in volume worth
+            such as payments and bank transfers. Since its inception DCU Bank has achieved over 50,000 daily users and has done over $2 billion in volume worth
         of daily transfers. In 2021 we had a revenue of $300m and are constantly using our funds to help increase the user
         experience each user gets from our platform.
         <br>
@@ -151,23 +129,24 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <br>
 <section class="team_section" style=" background-image: linear-gradient(120deg, hsl(234, 70%, 51%),hsl(0, 0%, 57%)">
     <div>
-        <img src="./Images-site/founder_1.jpg" style="height:350px; padding:5px"/>
+        <br>
+        <img src="./Images-site/founder1.jpg" style="height:350px; padding:5px"/>
 
 
         <p style="color: white; text-align: center;">
             <br>
-            <b>August Harlow (CEO) </b>
+            <b>Franklin Leroy (CEO) </b>
 
         </p>
 
         <br>
     </div>
     <div>
-        <img src="./Images-site/founder_2.jpg" style=" height:350px; padding:10px"/>
+        <img src="./Images-site/founder2.jpg" style=" height:350px; padding:10px"/>
 
         <p style=" color: white; text-align: center;">
             <br>
-            <b>John Michael (COO) </b>
+            <b>Theodore Michael (COO) </b>
         </p>
         <br>
 
@@ -186,41 +165,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <!-- Footer section
         Has email input and a button to submit-->
     <form action="NewsletterServlet" id="form">
-        <label for="email" style="font-size: medium; color:">Enter your email:</label>
+        <label for="emailft" style="font-size: medium; color:">Enter your email:</label>
         <input type="email" id="emailft" name="emailft" class="email_input">
         <input type="submit" class="footer_button">
     </form>
     <div class="error_success"></div>
     <br>
 </div>
-<br>
-<script>
-    let ids = (id) => document.getElementById(id);
-    let classes = (classes) => document.getElementsByClassName(classes);
-    let emailft = ids("emailft"),
-        form = ids("form"),
-        error_successMsg = classes("error_success");
-    var emailftArr = [];
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        engine(emailft, 0, "Email can't be blank");
-    });
-    let engine = (id, serial, message) => {
-        if (id.value.trim() === "") {
-            error_successMsg[serial].innerHTML = message;
-            id.style.border = "2px solid red";
-        }
-        else {
-            error_successMsg[serial].innerHTML = "Email has been recorded";
-            id.style.border = "2px solid green";
-            if (serial == 0) {
-                emailftArr.push(emailft.value.trim());
-                localStorage.setItem("emailft", JSON.stringify(emailftArr));
-            }
-        }
-    }
-</script>
-
 
 </body>
 </html>

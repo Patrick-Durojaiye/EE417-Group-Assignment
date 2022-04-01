@@ -34,13 +34,6 @@ create table loans(
                       amount float
 );
 
-create table portfolio(
-                          first_name varchar(100),
-                          accountno int,
-                          asset_name varchar(100),
-                          asset_value float
-);
-
 create table newsletter(
     email varchar(100)
 );

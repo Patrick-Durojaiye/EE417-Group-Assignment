@@ -59,7 +59,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
-                <li><a class="current" href="index.jsp">Home</a></li>
+                <li><a class="current" href=home.jsp">Home</a></li>
                 <li><a href="about.jsp">About Us</a></li>
                 <li class="checker"><a>Apps</a>
                     <!-- dropdown is created -->
@@ -82,7 +82,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 <div class="new_widget">
     <br>
     <br>
-    <h1 style="text-align: center; font-size: 50px;"> Sign Up to Maxtek Bank Today</h1>
+    <h1 style="text-align: center; font-size: 50px;"> News from DCU Bank!</h1>
     <br>
 
     <script type="text/javascript"
@@ -91,41 +91,5 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
 </div>
 
-<h1 style="text-align: center; font-size: 50px;">Blogs</h1>
-<br>
-<br>
-<!-- Blogs displayed with heading text and intro text-->
-<div class="blog_section">
-    <div class="individual_blogs1">
-        <h4 style="font-size: medium;">18 Ways To Save Money On A Tight Budget</h4>
-        <p style="font-size: medium;">Living on a tight budget may make it seem like saving money isn't possible.
-            But saving when money is tight may not be as hard as you think. Even small adjustments to your lifestyle
-            can help. So, if you're looking for ways to save money on a tight budget, rest assured that it's much
-            easier than you think it is! You just have to put a little effort into it... <a href="#"
-                                                                                            title="Read More">more</a></p>
-    </div>
-
-    <div class="individual_blogs2">
-        <h4 style="font-size: medium;">How Often Do You Pay Property Tax? Your Questions Answered</h4>
-        <p style="font-size: medium;">Property taxes suck, but they’re something we all have to pay if we want to
-            own our domain. If you’re new to the homeowner game, you might have a ton of questions, like “how often
-            do you pay property tax?” and “are property taxes paid in advance?”... <a href="#"
-                                                                                      title="Read More">more</a></p>
-    </div>
-
-    <div class="individual_blogs3">
-        <h4 style="font-size: medium;">What Is Credit Life Insurance?</h4>
-        <p style="font-size: medium;">Have you ever borrowed money to buy a house or a car? You were probably
-            offered credit life insurance. Credit life insurance is an insurance policy that pays off a loan in the
-            event that the borrower passes away. Lenders usually offer it for home mortgages, car loans, and student
-            loans...
-            <a href="#" title="Read More">more</a>
-        </p>
-    </div>
-
-
-</div>
-
-<br>
 
 </body>

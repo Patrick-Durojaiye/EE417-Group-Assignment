@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 @WebServlet("/NewsletterServlet")
-public class NewsletterServlet {
+public class NewsletterServlet extends HttpServlet{
 
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class NewsletterServlet {
             stmt.executeUpdate(sqlstatement);
             System.out.println("uploaded contact info");
             con.close();
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("signup.jsp");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

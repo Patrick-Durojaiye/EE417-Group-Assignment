@@ -1,0 +1,32 @@
+.aboutus_logos {
+    color: white;
+    border-style: solid;
+    border-width: thick;
+    border-color: hsl(234, 70%, 51%);
+    background-color: hsl(234, 70%, 51%);
+    width:100%;
+    font-size: 15px;
+    text-align: center;
+    padding: 15px;
+    height:auto;
+}
+.aboutus_logo h1{
+    padding: 10px;
+}
+/* about us text centered and font size declared*/
+.aboutus_text p
+{
+    color: black;
+    border-style: solid;
+    border-width: thick;
+    border-color: hsl(234, 70%, 51%);
+    font-family: Arial, Helvetica;
+    text-align: center;
+    font-size: large;
+    text-align: left;
+    padding: 15px;
+    width: 95%;
+    height:auto;
+    margin: auto;
+
+}

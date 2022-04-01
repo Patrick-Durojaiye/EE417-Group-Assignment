@@ -22,131 +22,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
-    <style>
-        h1 {text-transform:uppercase;}
-        h2 {text-transform:uppercase;}
-        /* the log form class is accessed, this is the main overall class for the form */
-        /* in here, the background can be set as the cover as it will cover the entire page with the background image provided */
-        /* the items inside this container will be centered also on both axis */
-        /* display flex is being used */
-        .log-form{
-            height:75vh;
-            background-size: cover;
-            display:flex;
-            align-items: center;
-            justify-content: center;
-        }
-        /* this is the class for the boxes of the form, the width/height is set
-        the border radius is set to maintain the same style as previous implementations
-        the display flex is used and made it column based direction
-        this means that it will be one box on top of another rather than a row based direction */
-        .form-box{
-            min-width:400px;
-            min-height: 450px;
-            background-color: white;
-            box-shadow: 0px 0px 10px #cccccc;
-            border-radius:20px;
-            padding:40px;
-            display:flex;
-            flex-direction: column;
-
-        }
-        /* h4 tag is accessed in the title class to modify the text properties such as the font
-        and the margin/border */
-        .titles > h4{
-            font-size: 30px;
-            width: 100%;
-            text-align:center;
-            margin: 15px 0px 20px;
-            border-bottom: 1px solid ;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-        /* each form field is displayed in flex direction colum and width is set to 100% */
-        .form-field{
-            display:flex;
-            flex-direction: column;
-            width:100%;
-
-        }
-        /* each box is positioned relative and with a margin of 20px*/
-        .input-box{
-            position:relative;
-            margin-bottom: 20px;
-            width:100%;
-        }
-        /* The input of the actual form is modified here with a border/font etc */
-        .form-field .input-box input{
-            height: 45px;
-            width: 100%;
-            outline: none;
-            font-size: 16px;
-            border-radius: 5px;
-            padding-left: 10px;
-            border: 1px solid #ccc;
-            border-bottom-width: 2px;
-        }
-        /* the placeholder text is indented here by 10px */
-        .input-box > ::placeholder{
-            text-indent: 10px;
-        }
-        /* the form control class is the class for each text field, the various height/width could be adjusted here */
-        .form-control{
-            height:40px;
-            width:100%;
-            padding-right:0px 0px 0px 45px;
-            color: #444444;
-            border: 1px solid #cccccc;
-            border-radius: 5px;
-        }
-        /* the button login (basic container for button) is completed using flex display, it is aligned in the center */
-        .button-login{
-            display:flex;
-            margin:auto;
-
-        }
-        /* this is the actual button tag inside the button login class container, in which the transitions/color is set up. */
-        .button-login > button{
-            color: #ffffff;
-            font-size: 15px;
-            padding: 8px 35px;
-            background-color: hsl(234, 70%, 51%) ;
-            transition: all 0.5 ease;
-            border: 1px solid transparent;
-            cursor:pointer;
-            border-radius: 5px;
-            margin: 10px;
-            font-weight: 700;
-        }
-        /* the a tag inside the button login class is also modified to construct the forgot password section */
-        .button-login > a{
-            font-size: 16px;
-            color: #0089fe;
-            cursor:pointer;
-        }
-        /* styling the signup button */
-        .button-signup
-        {
-            padding: 12px 28px;
-            border: 1px solid transparent;
-            outline-width: 0;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            font-weight: 700;
-            background-color: hsl(234, 70%, 51%);
-            width:auto;
-            display:flex;
-            margin:auto;
-        }
-        /* hover effect applied, when hovered, the color/border color will be updated so it gives a nice transition */
-        button:hover{
-            background-color: transparent;
-            color: #000000fe;
-            border-color:#000000fe;
-        }
-    </style>
+    <link rel="stylesheet" href="css/formstyle.css"/>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script defer src="js/navbar.js"></script>
@@ -183,7 +59,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
-                <li><a class="current" href="index.jsp">Home</a></li>
+                <li><a class="current" href="home.jsp">Home</a></li>
                 <li><a href="about.jsp">About Us</a></li>
                 <li class="checker"><a>Apps</a>
                     <!-- dropdown is created -->

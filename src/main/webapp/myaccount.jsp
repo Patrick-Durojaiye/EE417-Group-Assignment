@@ -18,6 +18,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
     <!-- various style sheets added -->
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/navbar.css"/>
+    <link rel="stylesheet" href="css/tablestyle.css"/>
     <!-- font added here -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -59,7 +60,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
             <ul style="display:inline-flex; list-style-type:none; align-items:center;">
 
                 <!-- navbar is listed unordered in a tags and linking appropriately -->
-                <li><a class="current" href="index.jsp">Home</a></li>
+                <li><a class="current" href="home.jsp">Home</a></li>
                 <li><a href="about.jsp">About Us</a></li>
                 <li class="checker"><a>Apps</a>
                     <!-- dropdown is created -->
@@ -79,8 +80,8 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 </div>
 <br>
 <div>
-    <h1> Account Details </h1>
-    <table border="2px">
+    <h1 style="text-align: center"> Account Details </h1>
+    <table border="2px" class="tablecenter">
         <tr>
             <td>First Name</td>
             <td>Email</td>
@@ -139,8 +140,8 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
 
 <div>
 
-    <h1> Transfers </h1>
-    <table border="2px">
+    <h1 style="text-align: center"> Transfers </h1>
+    <table border="2px" class="tablecenter">
         <tr>
             <td>From</td>
             <td>To Account</td>
